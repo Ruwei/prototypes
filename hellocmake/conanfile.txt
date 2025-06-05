@@ -1,0 +1,13 @@
+[requires]
+nlohmann_json/3.11.2
+boost/1.86.0
+
+[test_requires]
+gtest/1.16.0
+
+[options]
+gtest/*:shared=False
+
+[generators]
+CMakeDeps
+CMakeToolchain

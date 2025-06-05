@@ -1,0 +1,18 @@
+@PACKAGE_INIT@
+
+# Set package version
+set(@PROJECT_NAME@_VERSION @PROJECT_VERSION@)
+
+# Configuration for including directories in the package
+include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@Targets.cmake")
+
+get_filename_component(_prefix ${CMAKE_CURRENT_LIST_DIR}/../../.. ABSOLUTE)
+
+if(MSVC)
+  add_compile_definitions(_USE_MATH_DEFINES)
+  set(@PROJECT_NAME@_LIBRARY_DIR ${_prefix}/lib/$<CONFIG>)
+  set(@PROJECT_NAME@_RUNTIME_DIR ${_prefix}/bin/$<CONFIG>)
+else()
+  set(@PROJECT_NAME@_LIBRARY_DIR ${_prefix}/lib)
+  set(@PROJECT_NAME@_RUNTIME_DIR ${_prefix}/bin)
+endif()
